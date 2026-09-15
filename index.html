@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE OG OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="start">🪟 THE OG OS</div>
+        <div class="time-section">
+            <div class="clock" id="clock">00:00:00 AM</div>
+            <div class="date" id="date">Loading...</div>
+        </div>
+    </div>
+
+    <main class="desktop">
+        <!-- Desktop icons -->
+        <div class="desktop-icons">
+            <div class="icon" id="filesIcon" title="Double-click to open Files">
+                <div class="icon-image">📁</div><div class="icon-name">Files</div>
+            </div>
+            <div class="icon" id="browserIcon" title="Double-click to open OG Browser">
+                <div class="icon-image">🌐</div><div class="icon-name">OG Browser</div>
+            </div>
+            <div class="icon" id="appCenterIcon" title="Double-click to open App Center">
+                <div class="icon-image">🚀</div><div class="icon-name">App Center</div>
+            </div>
+            <div class="icon" id="trashIcon" title="Double-click to open Trash">
+                <div class="icon-image">🗑️</div><div class="icon-name">Trash</div>
+            </div>
+        </div>
+
+        <!-- Welcome -->
+        <section class="window" id="welcomeWindow" style="display:block; width:620px;">
+            <div class="window-top">
+                <span>🏠 Welcome to OG OS</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content welcome-content">
+                <img src="1.png" class="welcome-img" alt="Welcome to OG OS">
+                <button class="primary-btn" data-open="appCenterWindow">🚀 Open App Center</button>
+            </div>
+        </section>
+
+        <!-- Files -->
+        <section class="window app-window" id="filesWindow">
+            <div class="window-top">
+                <span>📁 Files</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content files-content">
+                <div class="file-toolbar">
+                    <button id="newFolderBtn">📁 New Folder</button>
+                    <label class="toolbar-btn">📄 Add Document<input type="file" id="documentPicker" accept=".pdf,.doc,.docx,.txt,.rtf,.odt" hidden></label>
+                    <label class="toolbar-btn">🖼️ Add Picture<input type="file" id="picturePicker" accept="image/*" hidden></label>
+                </div>
+                <div class="breadcrumb" id="fileBreadcrumb">Home</div>
+                <div class="file-grid" id="fileGrid"></div>
+            </div>
+        </section>
+
+        <!-- Downloads -->
+        <section class="window app-window" id="downloadsWindow">
+            <div class="window-top">
+                <span>📥 Downloads</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content files-content">
+                <div class="file-toolbar"><button id="clearDownloadsBtn">🧹 Clear Downloads</button></div>
+                <div class="file-grid" id="downloadsGrid"></div>
+            </div>
+        </section>
+
+        <!-- File viewer -->
+        <section class="window app-window" id="fileViewerWindow">
+            <div class="window-top">
+                <span id="viewerTitle">📄 File</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content viewer-content">
+                <pre id="viewerText"></pre>
+                <img id="viewerImage" class="viewer-image" alt="">
+                <div id="viewerOther" class="empty-state"></div>
+            </div>
+        </section>
+
+        <!-- Browser -->
+        <section class="window app-window browser-window" id="browserWindow">
+            <div class="window-top">
+                <span>🌐 OG Browser</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="browser-ui">
+                <div class="browser-nav">
+                    <button id="browserBack">←</button><button id="browserForward">→</button>
+                    <button id="browserHome">⌂</button>
+                    <input id="browserAddress" type="text" placeholder="Search the web or enter a URL">
+                    <button id="browserGo">Go</button>
+                </div>
+                <div class="browser-shortcuts">
+                    <button data-url="https://www.google.com/search?q=">Google</button>
+                    <button data-url="https://www.youtube.com/results?search_query=">YouTube</button>
+                    <button data-url="https://en.wikipedia.org/wiki/Special:Search?search=">Wikipedia</button>
+                </div>
+                <div id="browserPage" class="browser-page">
+                    <div class="browser-home">
+                        <div class="browser-logo">🌐</div>
+                        <h1>OG Browser</h1>
+                        <p>Search the web from your OG OS.</p>
+                        <div class="browser-search">
+                            <input id="browserInput" type="text" placeholder="Search the web...">
+                            <button id="browserSearchBtn">Search</button>
+                        </div>
+                        <div class="browser-message" id="browserMessage">
+                            <strong>OG Browser knowledge:</strong> Ask <em>who is the owner of OG OS</em>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trash -->
+        <section class="window app-window" id="trashWindow">
+            <div class="window-top">
+                <span>🗑️ Trash</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content files-content">
+                <div class="file-toolbar"><button id="emptyTrashBtn" class="danger-btn">🗑️ Empty Trash</button></div>
+                <div class="file-grid" id="trashGrid"></div>
+            </div>
+        </section>
+
+        <!-- App Center -->
+        <section class="window app-window" id="appCenterWindow">
+            <div class="window-top">
+                <span>🚀 OG App Center</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <h1>🚀 OG App Center</h1>
+                <p>Choose an application or game.</p>
+                <div class="app-grid">
+                    <div class="app-card" data-open="filesWindow"><div class="app-icon">📁</div><div>Files</div></div>
+                    <div class="app-card" data-open="browserWindow"><div class="app-icon">🌐</div><div>OG Browser</div></div>
+                    <div class="app-card" data-open="trashWindow"><div class="app-icon">🗑️</div><div>Trash</div></div>
+                    <div class="app-card" data-open="notesWindow"><div class="app-icon">📝</div><div>Notes</div></div>
+                    <div class="app-card" data-open="calculatorWindow"><div class="app-icon">🧮</div><div>Calculator</div></div>
+                    <div class="app-card" data-open="settingsWindow"><div class="app-icon">⚙️</div><div>Settings</div></div>\n                    <div class="app-card" data-open="highScoresWindow"><div class="app-icon">🏆</div><div>High Scores</div></div>
+                    <div class="app-card" data-open="gamesWindow"><div class="app-icon">🎮</div><div>Games</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notes -->
+        <section class="window app-window" id="notesWindow">
+            <div class="window-top">
+                <span>📝 OG Notes</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content notes-content">
+                <div class="notes-toolbar">
+                    <input id="noteName" placeholder="Note file name (e.g. My Ideas)">
+                    <button id="newNoteBtn">✨ New</button>
+                    <button id="saveNotes">💾 Save to Notes</button>
+                    <button id="deleteNoteBtn" class="danger-btn">🗑️ Delete</button>
+                </div>
+                <div class="notes-layout">
+                    <div class="note-list" id="noteList"></div>
+                    <textarea id="notesText" placeholder="Write your note here..."></textarea>
+                </div>
+                <p class="hint">Saved notes appear in Files → Notes.</p>
+            </div>
+        </section>
+
+        <!-- Calculator -->
+        <section class="window app-window" id="calculatorWindow">
+            <div class="window-top">
+                <span>🧮 Calculator</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="calculator">
+                <input id="calcDisplay" readonly value="0">
+                <div class="calculator-buttons">
+                    <button data-calc="clear">C</button><button data-calc="back">⌫</button><button data-calc="%">%</button><button data-calc="/">÷</button>
+                    <button data-calc="7">7</button><button data-calc="8">8</button><button data-calc="9">9</button><button data-calc="*">×</button>
+                    <button data-calc="4">4</button><button data-calc="5">5</button><button data-calc="6">6</button><button data-calc="-">−</button>
+                    <button data-calc="1">1</button><button data-calc="2">2</button><button data-calc="3">3</button><button data-calc="+">+</button>
+                    <button data-calc="0" class="zero">0</button><button data-calc=".">.</button><button data-calc="=">=</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings -->
+        <section class="window app-window" id="settingsWindow">
+            <div class="window-top">
+                <span>⚙️ Settings</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h1>⚙️ Settings</h1>
+                <div class="setting-row"><span>✨ Window Glow</span><label class="switch"><input type="checkbox" id="windowGlow" checked><span class="slider"></span></label></div>
+                <div class="setting-row"><span>🕐 24 Hour Clock</span><label class="switch"><input type="checkbox" id="clock24"><span class="slider"></span></label></div>
+                <div class="setting-row"><span>🪟 Glass Transparency</span><label class="switch"><input type="checkbox" id="glassMode" checked><span class="slider"></span></label></div>
+            </div>
+        </section>
+
+        <!-- Games -->
+        <section class="window app-window games-window" id="gamesWindow">
+            <div class="window-top">
+                <span>🎮 OG Games</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="games-menu" id="gamesMenu">
+                <h1>🎮 OG Games</h1>
+                <p>Original games made for OG OS.</p>
+                <div class="game-select">
+                    <button id="snakeSelect">🐍 Snake</button>
+                    <button id="platformSelect">⭐ OG Platformer</button>
+                </div>
+            </div>
+            <div class="game-panel" id="snakeGamePanel" hidden>
+                <div class="game-head"><h2>🐍 Snake</h2><span>Score: <b id="snakeScore">0</b></span></div>
+                <canvas id="snakeCanvas" width="420" height="420"></canvas>
+                <p>Use Arrow Keys or WASD. Press Space to restart.</p>
+                <button class="secondary-btn backGameBtn">← Games</button>
+            </div>
+            <div class="game-panel" id="platformGamePanel" hidden>
+                <div class="game-head"><h2>⭐ OG Platformer</h2><span>Coins: <b id="platformScore">0</b></span></div>
+                <canvas id="platformCanvas" width="700" height="360"></canvas>
+                <p>Move: A/D or ←/→ &nbsp; Jump: W/↑/Space</p>
+                <button class="secondary-btn backGameBtn">← Games</button>
+            </div>
+        </section>
+    </main>
+
+    <section class="window app-window" id="highScoresWindow" style="display:none; left:420px; top:150px; width:440px;">
+            <div class="window-top">
+                <span>🏆 OG High Scores</span>
+                <div class="window-buttons">
+                    <button class="minimizeBtn">−</button><button class="maximizeBtn">□</button><button class="closeBtn">×</button>
+                </div>
+            </div>
+            <div class="window-content high-score-content">
+                <h1>🏆 High Scores</h1>
+                <p>Your best scores are saved automatically on this device.</p>
+                <div class="score-board">
+                    <div class="score-row score-head"><span>Game</span><span>Best</span></div>
+                    <div class="score-row"><span>🐍 Snake</span><strong id="snakeHighScore">0</strong></div>
+                    <div class="score-row"><span>⭐ OG Platformer</span><strong id="platformHighScore">0</strong></div>
+                </div>
+                <button id="resetHighScores" class="secondary-btn">🗑️ Reset High Scores</button>
+            </div>
+        </section>
+
+<script src="script.js"></script>
+</body>
+</html>
